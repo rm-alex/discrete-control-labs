@@ -184,6 +184,12 @@ y_{k+1}=ay_k+b
 $$
 
 
+Соответствующая ему передаточная функция:
+$$
+W\left( z \right)=\frac{b}{z-a}
+$$
+
+
 Решение рекуррентного уравнения -- сумма общего $(h)$
 и частного $(p)$ решений:
 $$
@@ -287,10 +293,8 @@ $$
 
 Экстраполятор нулевого порядка (ZOH)
 удерживает сигнал управления постоянным
-на протяжении каждого шага дискретизации $T$.
-
-
-ZOH переносит полюса системы из $s$-плоскости
+на протяжении каждого шага дискретизации $T$
+и переносит полюса системы из $s$-плоскости
 в $z$-плоскость по преобразованию:
 $$
 z=e^{sT}
@@ -315,7 +319,7 @@ $$
 Положим $K_{FB}=0,y_0=0$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{k0_y0.png}
+    \includegraphics[scale=0.8]{k0_y0.png}
     \caption{Выход симуляции при $K_{FB}=0,y_0=0$}
     \label{fig:k0_y0}
 \end{figure}
@@ -324,7 +328,7 @@ $$
 Положим $K_{FB}=0.3,y_0=0$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{k03_y0.png}
+    \includegraphics[scale=0.8]{k03_y0.png}
     \caption{Выход симуляции при $K_{FB}=0.3,y_0=0$}
     \label{fig:k03_y0}
 \end{figure}
@@ -333,7 +337,7 @@ $$
 Положим $K_{FB}=1/\left( TK_{CO} \right),y_0=0$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{k045_y0.png}
+    \includegraphics[scale=0.8]{k045_y0.png}
     \caption{Выход симуляции при $K_{FB}=1/\left( TK_{CO} \right),y_0=0$}
     \label{fig:k045_y0}
 \end{figure}
@@ -342,7 +346,7 @@ $$
 Положим $K_{FB}=0.6,y_0=0$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{k06_y0.png}
+    \includegraphics[scale=0.8]{k06_y0.png}
     \caption{Выход симуляции при $K_{FB}=0.6,y_0=0$}
     \label{fig:k06_y0}
 \end{figure}
@@ -351,7 +355,7 @@ $$
 Положим $K_{FB}=2/\left( TK_{CO} \right),y_0=0$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{k09_y0.png}
+    \includegraphics[scale=0.8]{k09_y0.png}
     \caption{Выход симуляции при $K_{FB}=2/\left( TK_{CO} \right),y_0=0$}
     \label{fig:k09_y0}
 \end{figure}
@@ -360,7 +364,7 @@ $$
 Положим $K_{FB}=1,y_0=0$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{k1_y0.png}
+    \includegraphics[scale=0.8]{k1_y0.png}
     \caption{Выход симуляции при $K_{FB}=1,y_0=0$}
     \label{fig:k1_y0}
 \end{figure}
