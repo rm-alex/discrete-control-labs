@@ -320,7 +320,7 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{k0_y0.png}
-    \caption{Выход симуляции при $K_{FB}=0,y_0=0$}
+    \caption{Выход системы при $K_{FB}=0,y_0=0$}
     \label{fig:k0_y0}
 \end{figure}
 
@@ -329,7 +329,7 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{k03_y0.png}
-    \caption{Выход симуляции при $K_{FB}=0.3,y_0=0$}
+    \caption{Выход системы при $K_{FB}=0.3,y_0=0$}
     \label{fig:k03_y0}
 \end{figure}
 
@@ -338,7 +338,7 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{k045_y0.png}
-    \caption{Выход симуляции при $K_{FB}=1/\left( TK_{CO} \right),y_0=0$}
+    \caption{Выход системы при $K_{FB}=1/\left( TK_{CO} \right),y_0=0$}
     \label{fig:k045_y0}
 \end{figure}
 
@@ -347,7 +347,7 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{k06_y0.png}
-    \caption{Выход симуляции при $K_{FB}=0.6,y_0=0$}
+    \caption{Выход системы при $K_{FB}=0.6,y_0=0$}
     \label{fig:k06_y0}
 \end{figure}
 
@@ -356,7 +356,7 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{k09_y0.png}
-    \caption{Выход симуляции при $K_{FB}=2/\left( TK_{CO} \right),y_0=0$}
+    \caption{Выход системы при $K_{FB}=2/\left( TK_{CO} \right),y_0=0$}
     \label{fig:k09_y0}
 \end{figure}
 
@@ -365,13 +365,314 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{k1_y0.png}
-    \caption{Выход симуляции при $K_{FB}=1,y_0=0$}
+    \caption{Выход системы при $K_{FB}=1,y_0=0$}
     \label{fig:k1_y0}
 \end{figure}
 
 
 \section{Исследование устойчивости дискретных систем}
-...
+Исходные данные:
+\begin{align*}
+    &T=0.25\text{ с},\\
+    &\sigma_1=\left\{ 1.59, 1.02 \right\},\\
+    &\sigma_2=\left\{ -0.08, -0.69 \right\},\\
+    &\sigma_3=\left\{ 0.29, -0.06 \right\},\\
+    &\sigma_4=\left\{ 0.31j, -0.37j \right\},\\
+    &\sigma_5=\left\{ -1.35\pm1.02j  \right\}
+\end{align*}
+
+
+Рассмотрим непрерывный ОУ:
+$$
+\ddot{y}=u,
+$$
+где $u(t)$ -- управляющее воздействие,
+$y(t)$ -- выходная величина.
+
+
+Положим:
+$$
+x_1=y,\ x_2=\dot{y}
+$$
+
+
+Тогда:
+$$
+\dot{x}_1=x_2,\ \dot{x}_2=u
+$$
+
+
+Система имеет вид (В-С-В):
+$$
+\dot{x}=A_\text{н}x+B_\text{н}u,\ y=Cx+Du,
+$$
+где:
+$$
+A_\text{н}=\begin{bmatrix}
+    0&1\\0&0
+\end{bmatrix},\ B_\text{н}=\begin{bmatrix}
+    0\\1
+\end{bmatrix},\ C=\begin{bmatrix}
+    1&0
+\end{bmatrix},\ D=0
+$$
+
+
+Приведем к дискретному виду:
+$$
+A=e^{A_\text{н}T}=\sum\limits_{i=0}^{k}\frac{A^{i}_\text{н}T^{i}}{i!},\ B=\int\limits_{0}^{T}e^{A_\text{н}\left( T-\tau \right)}\varphi\left( \tau \right)\,d\tau\cdot B_\text{н}=\sum\limits_{i=1}^{k}\frac{A^{i-1}_\text{н}T^{i}}{i!}B_\text{н}
+$$
+
+
+Рассмотрим $i=0,1,2$:
+$$
+A^0_\text{н}=\begin{bmatrix}
+    1&0\\0&1
+\end{bmatrix},\
+A^1_\text{н}=\begin{bmatrix}
+    0&1\\0&0
+\end{bmatrix},\\ A^2_\text{н}=\begin{bmatrix}
+    0&0\\0&0
+\end{bmatrix}
+$$
+
+
+Достаточно взять $k=2$:
+$$
+A=I+A_\text{н}T+\frac{A^2_\text{н}T^2}{2}=\begin{bmatrix}
+    1&T\\0&1
+\end{bmatrix},
+$$
+$$
+B=A^0_\text{н}TB_\text{н}+\frac{A^1_\text{н}T^2B_\text{н}}{2}=\begin{bmatrix}
+    \frac{T^2}{2}\\T
+\end{bmatrix}
+$$
+
+
+Дискретная модель:
+$$
+x_{k+1}=Ax_k+Bu_k,\ y_k=Cx_k,
+$$
+где:
+$$
+A=\begin{bmatrix}
+    1&T\\0&1
+\end{bmatrix},\ B=\begin{bmatrix}
+    \frac{T^2}{2}\\T
+\end{bmatrix},\ C=\begin{bmatrix}
+    1&0
+\end{bmatrix},\ D=0
+$$
+
+
+Зададим управляющее воздействие:
+$$
+u\left( k \right)=-Kx\left( k \right)=-\begin{bmatrix}
+    k_1&k_2
+\end{bmatrix}\begin{bmatrix}
+    x_1\left( k \right)\\x_2\left( k \right)
+\end{bmatrix}
+$$
+
+
+Матрица динамики замкнутой системы:
+$$
+F=A-BK=\begin{bmatrix}
+\frac{-T^2k_1+2}{2}	&\frac{2T-T^2k_2}{2}\\
+        -Tk_1	       &-Tk_2+1
+\end{bmatrix}
+$$
+
+
+Замкнутая дискретная система:
+$$
+x_{k+1}=Fx_k
+$$
+
+
+Характеристический полином:
+$$
+\det{\left( \lambda I-F \right)}=\lambda^2+\lambda\left( T^2k_1/2+Tk_2-2 \right)+\left( T^2k_1/2-Tk_2+1 \right)=0
+$$
+
+
+Пусть желаемый полином:
+$$
+\left( \lambda-\lambda_1 \right)\left( \lambda-\lambda_2 \right)=\lambda^2-\left( \lambda_1+\lambda_2 \right)\lambda+\lambda_1\lambda_2
+$$
+
+
+Для спектра $\sigma_1=\left\{ 1.59, 1.02 \right\}$:
+$$
+\lambda^2-\left( 1.59+1.02 \right)\lambda+1.59\cdot1.02=\lambda^2-2.61\lambda+1.6218
+$$
+
+
+Следовательно:
+$$
+\begin{cases}
+    T^2k_1/2+Tk_2-2 =-2.61,\\
+     T^2k_1/2-Tk_2+1 =1.6218
+\end{cases}\Rightarrow\begin{cases}
+    T^2k_1/2+Tk_2 =-0.61,\\
+     T^2k_1/2-Tk_2 =0.6218,
+\end{cases}
+$$
+$$
+\begin{cases}
+    k_1=\frac{0.0118}{T^2}=0.1888,\\
+    k_2=-\frac{0.6159}{T}=-2.4636
+\end{cases}
+$$
+
+
+Проверим:
+$$
+\sigma\left( F \right)=\left\{ 1.02,1.59 \right\}
+$$
+
+
+Повторим для спектра $\sigma_2=\left\{ -0.08, -0.69 \right\}$:
+$$
+\lambda^2-\left( -0.08-0.69 \right)\lambda+0.08\cdot0.69=\lambda^2+0.77\lambda+0.0552,
+$$
+$$
+\begin{cases}
+    T^2k_1/2+Tk_2-2 =0.77,\\
+     T^2k_1/2-Tk_2+1 =0.0552
+\end{cases}\Rightarrow\begin{cases}
+    T^2k_1/2+Tk_2 =2.77,\\
+     T^2k_1/2-Tk_2=-0.9448,
+\end{cases}
+$$
+$$
+\begin{cases}
+    k_1=\frac{1.8252}{T^2}=29.2032,\\
+    k_2=\frac{0.6159}{T}=7.4296
+\end{cases}
+$$
+
+
+Проверим:
+$$
+\sigma\left( F \right)=\left\{ -0.08,-0.69 \right\}
+$$
+
+
+Аналогично $\sigma_3=\left\{ 0.29, -0.06 \right\}$:
+$$
+\lambda^2-\left( 0.29-0.06 \right)\lambda-0.29\cdot0.06=\lambda^2-0.23\lambda-0.0174,
+$$
+$$
+\begin{cases}
+    T^2k_1/2+Tk_2-2 =-0.23,\\
+     T^2k_1/2-Tk_2+1 =-0.0174
+\end{cases}\Rightarrow\begin{cases}
+    T^2k_1/2+Tk_2 =1.77,\\
+     T^2k_1/2-Tk_2=-1.0174,
+\end{cases}
+$$
+$$
+\begin{cases}
+    k_1=\frac{0.7526}{T^2}=12.0416,\\
+    k_2=\frac{1.3937}{T}=5.5748,
+\end{cases}\ \sigma\left( F \right)=\left\{ 0.29,-0.06 \right\}
+$$
+
+
+Аналогично $\sigma_4=\left\{ 0.31j, -0.37j \right\}$:
+$$
+\lambda^2-\left( 0.31j -0.37j \right)\lambda-0.31j\cdot0.37j=\lambda^2+0.06j\lambda+0.1147,
+$$
+$$
+\begin{cases}
+    T^2k_1/2+Tk_2-2 =0.06j,\\
+     T^2k_1/2-Tk_2+1 =0.1147
+\end{cases}\Rightarrow\begin{cases}
+    T^2k_1/2+Tk_2 =2+0.06j,\\
+     T^2k_1/2-Tk_2=-0.8853,
+\end{cases}
+$$
+$$
+\begin{cases}
+    k_1=\frac{1.1147+0.06j}{T^2}=17.8352+0.96j,\\
+    k_2=\frac{1.44265+0.03j}{T}=5.7706+0.12j,
+\end{cases}\ \sigma\left( F \right)=\left\{ 0.31j,-0.37j \right\}
+$$
+
+
+Аналогично $\sigma_5=\left\{ -1.35\pm1.02j \right\}$:
+$$
+\lambda^2-\left( -1.35+1.02j-1.35-1.02j \right)\lambda+\left( -1.35+1.02j \right)\left( -1.35-1.02j \right),
+$$
+$$
+\lambda^2+2.7\lambda+2.8629
+$$
+$$
+\begin{cases}
+    T^2k_1/2+Tk_2-2 =2.7,\\
+     T^2k_1/2-Tk_2+1 =2.8629
+\end{cases}\Rightarrow\begin{cases}
+    T^2k_1/2+Tk_2 =4.7,\\
+     T^2k_1/2-Tk_2=1.8629,
+\end{cases}
+$$
+$$
+\begin{cases}
+    k_1=\frac{6.5629}{T^2}=105.0064,\\
+    k_2=\frac{1.41855}{T}=5.6742,
+\end{cases}\ \sigma\left( F \right)=\left\{ -1.35\pm1.02j \right\}
+$$
+
+
+Выполним моделирование систем при $y\left( 0 \right)=1,\dot{y}\left( 0 \right)=0$.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{2_s1.png}
+    \caption{Выход системы при $\sigma_1=\left\{ 1.02,1.59 \right\}$}
+    \label{fig:2_s1}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{2_s2.png}
+    \caption{Выход системы при $\sigma_2=\left\{ -0.08, -0.69  \right\}$}
+    \label{fig:2_s2}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{2_s3.png}
+    \caption{Выход системы при $\sigma_3=\left\{ 0.29,-0.06  \right\}$}
+    \label{fig:2_s3}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{2_s4.png}
+    \caption{Выход системы при $\sigma_4=\left\{ 0.31j,-0.37j  \right\}$}
+    \label{fig:2_s4}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{2_s5.png}
+    \caption{Выход системы при $\sigma_5=\left\{ -1.35\pm1.02j \right\}$}
+    \label{fig:2_s5}
+\end{figure}
+
+
+Когда вещественная часть собственных чисел по модулю больше 1, то система расходится.
+
+
+В обратном случае система сходится к устоявшемуся состоянию.
 
 
 \section{Построение дискретных командных генераторов}
