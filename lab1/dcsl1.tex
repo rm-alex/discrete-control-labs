@@ -676,7 +676,138 @@ $$
 
 
 \section{Построение дискретных командных генераторов}
-...
+Исходные данные:
+\begin{align*}
+    &T=0.25\text{ с},\\
+    &A=-8.5,\\
+    &\omega=0.7,\\
+    &f=0.4\sin{\left( 2kT \right)}+2.5\cos{\left( 6kT \right)},
+\end{align*}
+где $f$ -- внешнее возмущение.
+
+
+Синтезируем командный генератор гармонического сигнала:
+$$
+g\left( k \right)=A\sin{\left( kT\omega \right)}
+$$
+
+
+Выберем в качестве первой координаты вектора
+состояния дискретного генератора сам сигнал:
+$$
+\xi_1\left( k \right)=g\left( k \right)
+$$
+
+
+Возьмем первую разность (аналог производной) и выберем
+вторую переменную вектора
+состояния в виде этой разности:
+\begin{align*}
+    \xi_2\left( k \right)&=\xi_1\left( k+1 \right)=
+    A\sin{\left( kT\omega+T\omega \right)}=\\
+    &=A\left[ \sin{\left( kT\omega \right)}\cos{\left( T\omega \right)}+\cos{\left( kT\omega \right)}\sin{\left( T\omega \right)} \right]=\\
+    &=\xi_1\left( k \right)\cos{\left( T\omega \right)}+A\cos{\left( kT\omega \right)}\sin{\left( T\omega \right)}
+\end{align*}
+
+
+Возьмем вторую разность и выберем
+третью переменную вектора состояния
+в виде этой разности:
+\begin{align*}
+    \xi_3\left( k \right)&=\xi_2\left( k+1 \right)=
+    \xi_2\left( k \right)\cos{\left( T\omega \right)}+
+    A\cos{\left( kT\omega+T\omega \right)}\sin{\left( T\omega \right)}=\\
+    &=\xi_2\left( k \right)\cos{\left( T\omega \right)}+A\sin{\left( T\omega \right)}
+    \left[ \cos{\left( kT\omega \right)}\cos{\left( T\omega \right)}-\sin{\left( kT\omega \right)}\sin{\left( T\omega \right)} \right]=\\
+    &=\xi_2\left( k \right)\cos{\left( T\omega \right)}+\xi_2\left( k \right)\cos{\left( T\omega \right)}-\xi_1\left( k \right)\cos^2{\left( T\omega \right)}-\xi_1\left( k \right)\sin^2{\left( T\omega \right)}=\\
+    &=2\xi_2\left( k \right)\cos{\left( T\omega \right)}-\xi_1\left( k \right)
+\end{align*}
+
+
+Третья строчка из второй получается путем выражения второго слагаемого
+из выражения для $\xi_2\left( k \right)$.
+
+
+% Чтобы задать состояние системы,
+% необходимо знать значение $g\left( t \right)$
+% и его скорость изменения $\dot{g}\left( t \right)$.
+
+
+Достаточно двух разностей -- для
+вычисления $g\left( k+2 \right)$
+достаточно знать $g\left( k+1 \right)$ и $g\left( k \right)$
+(разностное уравнение второго порядка).
+
+
+Система выражений:
+$$
+\begin{cases}
+    \xi_1\left( k+1 \right)=\xi_2\left( k \right),\\
+    \xi_2\left( k+1 \right)=2\xi_2\left( k \right)\cos{\left( T\omega \right)}-\xi_1\left( k \right),\\
+    g\left( k \right)=\xi_1\left( k \right)
+\end{cases}
+$$
+
+
+Вектор начальных условий при $k=0$:
+$$
+\xi\left( 0 \right)=\begin{bmatrix}
+    0\\A\sin{\left( T\omega \right)}
+\end{bmatrix}
+$$
+
+
+Командный генератор:
+$$
+\begin{bmatrix}
+    \xi_1\left( k+1 \right)\\
+    \xi_2\left( k+1 \right)
+\end{bmatrix}=\begin{bmatrix}
+    0&1\\-1&2\cos{\left( T\omega \right)}
+\end{bmatrix}\begin{bmatrix}
+    \xi_1\left( k \right)\\
+    \xi_2\left( k \right)
+\end{bmatrix}=\Gamma_d\,\xi\left( k \right),
+$$
+$$
+g\left( k \right)=\begin{bmatrix}
+    1&0
+\end{bmatrix}\begin{bmatrix}
+    \xi_1\left( k \right)\\
+    \xi_2\left( k \right)
+\end{bmatrix}=H\xi\left( k \right)
+$$
+
+
+Схема моделирования командного генератора:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.55]{3_1.png}
+    \caption{Схема командного генератора}
+    \label{fig:3_1}
+\end{figure}
+
+
+Выполним моделирование командного генератора.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{3_11.png}
+    \caption{Выход генератора}
+    \label{fig:3_11}
+\end{figure}
+
+
+Синтезируем дискретную математическую модель возмущения
+<<вход-состояние-выход>> с параметрами:
+$$
+g\left( k \right)=0.4\sin{\left( 2kT \right)}+2.5\cos{\left( 6kT \right)}
+$$
+
+
+Алгоритм аналогичный:
+$$
+\xi_1\left( k \right)=g\left( k \right)
+$$
 
 
 \section{Вывод}

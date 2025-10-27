@@ -1,7 +1,7 @@
 T=0.25;
 A=[1 T; 0 1];
 B=[T^2/2;T];
-K=[105.0064 5.6742] % k1 k2
+K=[0.1888 -2.4636] % k1 k2
 
 F=A-B*K
 
@@ -19,13 +19,15 @@ end
 
 time = (0:N)*T;
 
-plot(time, x(1,:), '-o', 'LineWidth', 1.5); hold on;
-plot(time, x(2,:), '-x', 'LineWidth', 1.5);
-xlabel('k');
-ylabel('x_k');
-legend('x_1','x_2');
+stairs(time, x(1,:), 'LineWidth', 1.5);
+% hold on;
+% stairs(time, x(2,:), 'LineWidth', 1.5);
+xlabel('t');
+% ylabel('x_k');
+% legend('x_1','x_2');
+ylabel('y(t)')
 
-% title(sprintf('x_{k+1} = F x_k, eig(F) = {%0.2f, %0.2f}', eigF(1), eigF(2)));
-title(sprintf('x_{k+1} = F x_k, eig(F) = {%0.2f + %0.2fi, %0.2f %0.2fi}', ...
-    real(eigF(1)), imag(eigF(1)), real(eigF(2)), imag(eigF(2))));
+title(sprintf('System output, eig(F) = {%0.2f, %0.2f}', eigF(1), eigF(2)));
+% title(sprintf('System output, eig(F) = {%0.2f %0.2fi, %0.2f + %0.2fi}', ...
+%     real(eigF(1)), imag(eigF(1)), real(eigF(2)), imag(eigF(2))));
 grid on;
