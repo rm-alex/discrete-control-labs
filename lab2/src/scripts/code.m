@@ -1,3 +1,4 @@
+%% input
 T=1;
 k_1=9.71;
 
@@ -5,6 +6,8 @@ A=[1 T; 0 1];
 B=[T^2*k_1/2; T*k_1];
 C=[1 0];
 D=0;
+
+%% a
 
 eig(A)
 
@@ -31,3 +34,33 @@ M
 K = H*M^-1
 
 F=A-B*K
+
+%% b
+
+G=1;
+H=1;
+B_eta=1;
+
+barA=[G -B_eta*C;
+      [0;0] A]
+barB=[0;B]
+barB1=[B_eta;[0;0]]
+
+barU=[barB barA*barB barA^2*barB]
+rank(barU)
+
+barG=[0 1 0;
+     0 0 1;
+     0 0 0];
+barH=[1 0 0];
+
+cvx_begin sdp
+variable M(3,3)
+M*barG - barA*M == -barB*barH;
+cvx_end
+
+M
+barK=barH*inv(M)
+
+barF=barA-barB*barK
+eig(barF)
