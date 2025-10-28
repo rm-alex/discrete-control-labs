@@ -1,0 +1,161 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+\usepackage[left=30mm, right=10mm, top=20mm, bottom=20mm]{geometry}
+
+\usepackage{tempora}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{titlesec}
+\titleformat{\section}[block]{\bfseries\centering\MakeUppercase}{\thesection.}{1em}{}
+\titleformat{\subsection}[block]{\bfseries}{\thesubsection.}{1em}{}
+\titleformat{\subsubsection}[block]{\bfseries}{\thesubsubsection.}{1em}{}
+
+\renewcommand{\contentsname}{\hfill \textbf{СОДЕРЖАНИЕ} \hfill\null}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{cmap}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{LightGray}{gray}{0.7}
+
+\lstdefinestyle{code}{
+    language=Python, % change if needed
+    basicstyle=\small\ttfamily,
+    numbers=left,
+    numberstyle=\small\color{LightGray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    frame=single,
+    rulecolor=\color{LightGray},
+    linewidth=\linewidth,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!40!black},
+    stringstyle=\color{violet},
+    escapeinside={\%*}{*)},
+    xleftmargin=10pt,
+    xrightmargin=10pt,
+    framexleftmargin=0pt,
+    framexrightmargin=0pt
+}
+\lstset{style=code}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={ncs1},
+    pdfauthor={Rumyantsev Alexey},
+    pdfsubject={control},
+    pdfkeywords={LaTeX, PDF},
+    pdfpagemode=FullScreen,
+}
+
+\graphicspath{{src/images/}}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ\\
+        \vspace*{2.5mm}
+        Федеральное государственное автономное образовательное учреждение высшего образования
+        «НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ ИТМО»\\
+        \vspace*{2.5mm}
+        \textbf{ФАКУЛЬТЕТ СИСТЕМ УПРАВЛЕНИЯ И РОБОТОТЕХНИКИ}
+        \vfill
+
+        {\large ОТЧЕТ ПО ЛАБОРАТОРНОЙ РАБОТЕ №2}\\
+        {\large по дисциплине}\\
+        {\large\bfseries «ДИСКРЕТНЫЕ СИСТЕМЫ УПРАВЛЕНИЯ»}\\
+        {\large на тему}\\
+        {\large\bfseries «ДИСКРЕТНЫЕ СТАБИЛИЗИРУЮЩИЕ И СЛЕДЯЩИЕ ГЕНЕРАТОРЫ. НАБЛЮДАТЕЛЬ ДИСКРЕТНОЙ СИСТЕМЫ»}\\
+        Вариант 20
+        \vfill
+
+        \begin{flushright}
+            Выполнил: студент гр. R3441\\
+            Румянцев А. А.\medskip\\
+
+            Проверил: преподаватель\\
+            Краснов А. Ю.
+        \end{flushright}
+        \vfill
+
+        Санкт-Петербург\\
+        2025
+    \end{center}
+\end{titlepage}
+
+\setcounter{page}{2}
+\tableofcontents
+\newpage
+
+
+\section{Проектирование дискретных стабилизирующих регуляторов}
+Исходные данные:
+\begin{align*}
+    &\text{Тип ОУ: }4,\\
+    &k_1=9.71,\\
+    &a_0^1=0,\\
+    &T_1=1,\\
+    &\xi=0,\\
+    &k_2=1,\\
+    &a_0^2=0,\\
+    &T_2=4,\\
+    &T=1
+\end{align*}
+
+
+\dots
+
+
+\section{Проектирование дискретных следящих регуляторов}
+Исходные данные:
+\begin{align*}
+    &g_0=2.12,\\
+    &g_1=0,\\
+    &A_g=0,\\
+    &\omega_g=0,\\
+    &g\left( k \right)=g_0+g_1kT=2.12
+\end{align*}
+
+
+\dots
+
+
+\section{Построение регуляторов для объектов с неполной информацией}
+Исходные данные: четный вариант -- 
+устройство оценки полной размерности.
+
+
+\dots
+
+
+\section{Вывод}
+\dots
+\end{document}
