@@ -681,9 +681,9 @@ $$
     &T=0.25\text{ с},\\
     &A=-8.5,\\
     &\omega=0.7,\\
-    &f=0.4\sin{\left( 2kT \right)}+2.5\cos{\left( 6kT \right)},
+    &f\left( k \right)=0.4\sin{\left( 2kT \right)}+2.5\cos{\left( 6kT \right)},
 \end{align*}
-где $f$ -- внешнее возмущение.
+где $f\left( k \right)$ -- внешнее возмущение.
 
 
 Синтезируем командный генератор гармонического сигнала:
@@ -743,7 +743,7 @@ $$
 $$
 \begin{cases}
     \xi_1\left( k+1 \right)=\xi_2\left( k \right),\\
-    \xi_2\left( k+1 \right)=2\xi_2\left( k \right)\cos{\left( T\omega \right)}-\xi_1\left( k \right),\\
+    \xi_2\left( k+1 \right)=-\xi_1\left( k \right)+2\cos{\left( T\omega \right)}\xi_2\left( k \right),\\
     g\left( k \right)=\xi_1\left( k \right)
 \end{cases}
 $$
@@ -788,7 +788,7 @@ $$
 \end{figure}
 
 
-Выполним моделирование командного генератора.
+Выполним моделирование командного генератора:
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{3_11.png}
@@ -800,16 +800,143 @@ $$
 Синтезируем дискретную математическую модель возмущения
 <<вход-состояние-выход>> с параметрами:
 $$
-g\left( k \right)=0.4\sin{\left( 2kT \right)}+2.5\cos{\left( 6kT \right)}
+g\left( k \right)=f\left( k \right)=0.4\sin{\left( 2kT \right)}+2.5\cos{\left( 6kT \right)}
 $$
 
 
-Алгоритм аналогичный:
+Делим $g\left( k \right)$ на две подсистемы:
 $$
-\xi_1\left( k \right)=g\left( k \right)
+g\left( k \right)=g_1\left( k \right)+g_2\left( k \right)
 $$
+
+
+Аналогично общему случаю:
+$$
+\xi_1\left( k \right)=g_1\left( k \right),\ \eta_1\left( k \right)=g_2\left( k \right);
+$$
+\begin{align*}
+    \xi_2\left( k \right)&=\xi_1\left( k+1 \right)=0.4\sin{\left( 2kT+2T \right)}=\\
+    &=\xi_1\left( k \right)\cos{\left( 2T \right)}+0.4\cos{\left( 2kT \right)}\sin{\left( 2T \right)},
+\end{align*}
+\begin{align*}
+    \eta_2\left( k \right)&=\eta_1\left( k+1 \right)=2.5\cos{\left( 6kT+6T \right)}=\\
+    &=\eta_1\left( k \right)\cos{\left( 6T \right)}-2.5\sin{\left( 6kT \right)}\sin{\left( 6T \right)};
+\end{align*}
+\begin{align*}
+    \xi_3\left( k \right)&=\xi_2\left( k+1 \right)=\\
+    &=\xi_2\left( k \right)\cos{\left( 2T \right)}+0.4\cos{\left( 2kT+2T \right)}\sin{\left( 2T \right)}=\\
+    &=2\xi_2\left( k \right)\cos{\left( 2T \right)}-\xi_1\left( k \right),
+\end{align*}
+\begin{align*}
+    \eta_3\left( k \right)&=\eta_2\left( k+1 \right)=\\
+    &=\eta_2\left( k \right)\cos{\left( 6T \right)}-2.5\sin{\left( 6kT +6T \right)}\sin{\left( 6T \right)}=\\
+    &=2\eta_2\left( k \right)\cos{\left( 6T \right)}-\eta_1\left( k \right);
+\end{align*}
+
+
+Система:
+$$
+\begin{cases}
+    \xi_1\left( k+1 \right)=\xi_2\left( k \right),\\
+    \xi_2\left( k+1 \right)=-\xi_1\left( k \right)+2\cos{\left( 2T \right)}\xi_2\left( k \right),\\
+    \eta_1\left( k+1 \right)=\eta_2\left( k \right),\\
+    \eta_2\left( k+1 \right)=-\eta_1\left( k \right)+2\cos{\left( 6T \right)}\eta_2\left( k \right),\\
+    g\left( k \right)=\xi_1\left( k \right)+\eta_1\left( k \right)
+\end{cases}
+$$
+
+
+Начальные условия при $k=0$:
+$$
+\psi\left( 0 \right)=\begin{bmatrix}
+    \xi_1\left( 0 \right)\\
+    \xi_2\left( 0 \right)\\
+    \eta_1\left( 0 \right)\\
+    \eta_2\left( 0 \right)
+\end{bmatrix}=\begin{bmatrix}
+    0\\ 0.4\sin{\left( 2T \right)}\\2.5\\2.5\cos{\left( 6T \right)}
+\end{bmatrix}
+$$
+
+
+Генератор возмущений:
+$$
+\begin{bmatrix}
+    \xi_1\left( k+1 \right)\\
+    \xi_2\left( k+1 \right)\\
+    \eta_1\left( k+1\right)\\
+    \eta_2\left( k+1 \right)
+\end{bmatrix}=\begin{bmatrix}
+    0&1&0&0\\
+    -1&2\cos{\left( 2T \right)}&0&0\\
+    0&0&0&1\\
+    0&0&-1&2\cos{\left( 6T \right)}
+\end{bmatrix}\begin{bmatrix}
+    \xi_1\left( k \right)\\
+    \xi_2\left( k \right)\\
+    \eta_1\left( k\right)\\
+    \eta_2\left( k \right)
+\end{bmatrix}=\Gamma_d\,\psi\left( k \right),
+$$
+$$
+g\left( k \right)=\begin{bmatrix}
+    1&0&1&0
+\end{bmatrix}\begin{bmatrix}
+    \xi_1\left( k \right)\\
+    \xi_2\left( k \right)\\
+    \eta_1\left( k\right)\\
+    \eta_2\left( k \right)
+\end{bmatrix}=H\psi\left( k \right)
+$$
+
+\newpage
+Схема моделирования генератора возмущений:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.55]{3_2.png}
+    \caption{Схема генератора возмущений}
+    \label{fig:3_2}
+\end{figure}
+
+
+Выполним моделирование генератора возмущений:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{3_21.png}
+    \caption{Выход генератора $g_1\left( k \right)$}
+    \label{fig:3_21}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{3_22.png}
+    \caption{Выход генератора $g_2\left( k \right)$}
+    \label{fig:3_22}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{3_23.png}
+    \caption{Выход генератора $g\left( k \right)$}
+    \label{fig:3_23}
+\end{figure}
 
 
 \section{Вывод}
-...
+В ходе выполнения лабораторной работы
+было исследовано влияние дискретного
+элемента на непрерывную систему --
+был сделан вывод о снижении запаса
+устойчивости. Исследование
+устойчивости дискретных систем
+показало, что все собственные числа
+системы внутри единичного круга
+гарантируют устойчивость системы.
+Был синтеирован командный генератор
+и генератор возмущений. Моделирование
+показало, что таким способом
+успешно получается моделировать
+гармонические сигналы без дифференцирования.
 \end{document}
