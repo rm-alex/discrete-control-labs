@@ -131,7 +131,293 @@
 \end{align*}
 
 
-\dots
+Тип ОУ:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{4co.png}
+    \caption{Объект управления №4}
+    \label{fig:4co}
+\end{figure}
+
+
+В-С-В непрерывного ОУ:
+$$
+\begin{cases}
+    \dot{x}(t)=A_\text{н}x(t)+B_\text{н}u(t),\\
+    y(t)=Cx(t)+Du(t)
+\end{cases}
+$$
+
+
+Исходная передаточная функция:
+$$
+W(p)=\frac{k_1}{p^2}
+$$
+
+
+В операторной форме:
+$$
+W(p)=\frac{Y(p)}{U(p)}=\frac{k_1}{p^2}\Rightarrow Y(p)=\frac{k_1}{p^2}U(p)\Rightarrow p^2Y(p)=k_1U(p)
+$$
+
+
+Заменим $p$ на $d/dt$:
+$$
+\ddot{y}(t)=k_1u(t)
+$$
+
+
+Перейдем к канонической управляемой форме.
+
+
+Замены:
+$$
+x_1=y,\ x_2=\dot{y}
+$$
+
+
+Каноническая управляемая форма:
+$$
+\begin{cases}
+    \dot{x}_1=x_2,\\
+    \dot{x}_2=k_1u,\\
+    y=x_1
+\end{cases}
+$$
+
+
+Матрицы в форме состояния:
+$$
+A_\text{н}=\begin{bmatrix}
+    0&1\\0&0
+\end{bmatrix},\ B_\text{н}=\begin{bmatrix}
+    0\\k_1
+\end{bmatrix},\ C=\begin{bmatrix}
+    1&0
+\end{bmatrix},\ D=0
+$$
+
+
+Дискретные системы в пространстве состояний
+описываются разностными уравнениями:
+$$
+\begin{cases}
+    x(k+1)=Ax(k)+Bu(k),\\
+    y(k)=Cx(k)
+\end{cases}
+$$
+
+
+Приведем к дискретному виду:
+$$
+A=\sum\limits_{i=0}^{k}\frac{A^{i}_\text{н}T^{i}}{i!},\ B=\sum\limits_{i=1}^{k}\frac{A^{i-1}_\text{н}T^{i}}{i!}B_\text{н}
+$$
+
+
+Рассмотрим $i=0,1,2$:
+$$
+A_\text{н}^0=\begin{bmatrix}
+    1&0\\0&1
+\end{bmatrix},\ A_\text{н}^1=\begin{bmatrix}
+    0&1\\0&0
+\end{bmatrix},\ A_\text{н}=\begin{bmatrix}
+    0&0\\0&0
+\end{bmatrix}
+$$
+
+
+Достаточно взять $k=2$:
+$$
+A=I+A_\text{н}T+\frac{A^2_\text{н}T^2}{2}=\begin{bmatrix}
+    1&T\\0&1
+\end{bmatrix},
+$$
+$$
+B=A^0_\text{н}TB_\text{н}+\frac{A^1_\text{н}T^2B_\text{н}}{2}=\begin{bmatrix}
+    \frac{T^2k_1}{2}\\Tk_1
+\end{bmatrix}
+$$
+
+
+Таким образом:
+$$
+A=\begin{bmatrix}
+    1&1\\0&1
+\end{bmatrix},\ B=\begin{bmatrix}
+    4.855\\9.71
+\end{bmatrix},\ C=\begin{bmatrix}
+    1&0
+\end{bmatrix},\ D=0
+$$
+
+
+Корни характеристического полинома:
+$$
+\det{\left( z I-A \right)}=0\Rightarrow z_1=1,\ z_2=1
+$$
+
+
+Система неустойчива по Ляпунову, т.к. собственные числа не удовлетворяют $|z_i|<1$.
+
+
+Матрица управляемости:
+$$
+U=\begin{bmatrix}
+    B &AB
+\end{bmatrix}=\begin{bmatrix}
+    4.855   &14.565\\
+    9.71    &9.71
+\end{bmatrix}
+$$
+
+
+Ее ранг:
+$$
+\operatorname{rank}\left[ U \right]=2
+$$
+
+
+Ранг матрицы управляемости равен размерности состояния $n=2$
+-- система полностью управляема.
+
+
+Матрица наблюдаемости:
+$$
+V=\begin{bmatrix}
+    C\\CA
+\end{bmatrix}=\begin{bmatrix}
+    1     &0\\
+     1     &1
+\end{bmatrix}
+$$
+
+
+Ее ранг:
+$$
+\operatorname{rank}\left[ V \right]=2
+$$
+
+
+Ранг матрицы наблюдаемости равен размерности состояния $n=2$
+-- система полностью наблюдаема.
+
+
+Эталонная модель дискретной системы задается уравнениями движения:
+$$
+\begin{cases}
+    \xi(k+1)=\Gamma\xi(k),\\
+    y(k)=H\xi(k),
+\end{cases}
+$$
+где $\xi(k)$ -- вектор состояния
+дискретной эталонной модели,
+матрицы $\Gamma,H$ выбираются
+в соответствии с требуемыми
+показателями качества.
+
+
+Возьмем оптимальную по быстродействию
+дискретную систему -- когда $z_i^*=0,i=\overline{1,n}$:
+$$
+\Gamma_{n\times n}=\begin{bmatrix}
+    z_1&1\\0&z_2
+\end{bmatrix}=\begin{bmatrix}
+    0&1\\0&0
+\end{bmatrix},
+$$
+$$
+H_{l\times n}=\begin{bmatrix}
+    1&0
+\end{bmatrix}
+$$
+
+
+Пара $\left( H,\Gamma \right)$ полностью наблюдаема по признаку Жордана
+-- второй элемент состояния выражается через первый при умножении на $\Gamma$,
+который измеряется через $H$.
+
+
+Эталонный характеристический полином:
+$$
+D^*(z)=\det{\left( zI-\Gamma \right)}=\begin{vmatrix}
+    z&-1\\0&z
+\end{vmatrix}=z^2
+$$
+
+
+Оба полюса дискретной эталонной системы находятся в $z=0$ (максимально быстрое затухание).
+
+
+Уравнение типа Сильвестра:
+$$
+M\Gamma-AM=-BH
+$$
+
+
+Решение относительно $M$:
+$$
+M=\begin{bmatrix}
+    -4.855  &-14.565\\
+    9.71    &9.71
+\end{bmatrix}
+$$
+
+
+Матрица линейных стационарных обратных связей:
+$$
+K=\begin{bmatrix}
+    0.103    &0.1545
+\end{bmatrix}
+$$
+
+
+Замкнутая система:
+$$
+x(k+1)=Fx(k),\ F=A-BK,\ u=-Kx(k)
+$$
+
+
+Схема моделирования системы:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{sch1.png}
+    \caption{Схема моделирования системы}
+    \label{fig:sch1}
+\end{figure}
+
+
+Выполним моделирование замкнутой системы при $y(0)=1,\dot{y}=0$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{1x.png}
+    \caption{Вектор состояния замкнутой системы}
+    \label{fig:1x}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{1y.png}
+    \caption{Выход замкнутой системы}
+    \label{fig:1y}
+\end{figure}
+
+
+Время установления:
+$$
+T_s=k_sT,\ k_s=\min{\left\{ k:\, |y[m]-y_\infty|\leq\varepsilon\,\forall m\geq k \right\}}
+$$
+
+
+С момента $k=2$ значения равны нулю:
+$$
+\forall\varepsilon>0,m\geq k:\,|x[m]-0|\leq\varepsilon\Rightarrow T_s=2T=2
+$$
+
+
+Условие оптимальности по времени выполнилось:
+$$
+T_s=2\leq nT=2,
+$$
+где $n=2$ -- порядок системы.
 
 
 \section{Проектирование дискретных следящих регуляторов}
