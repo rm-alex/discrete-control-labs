@@ -68,9 +68,29 @@ eig(barF)
 %% sim
 
 barC=[0 C]
-k1=1;
+k1=barK(2);
 bBg=barB1+k1*barB
 
 set_param('sim3/barF', 'Gain', mat2str(barF));
 set_param('sim3/barC', 'Gain', mat2str(barC));
 set_param('sim3/barBg', 'Gain', mat2str(bBg));
+
+%% L
+
+Gn=[0 1;
+    0 0];
+Hn=[1 0];
+
+cvx_begin sdp
+variable Mn(2,2)
+Mn*Gn-A'*Mn == -C'*Hn;
+cvx_end
+
+Mn
+L = (Hn*Mn^-1)'
+
+Fn=A-L*C
+eig(Fn)
+
+% K=[0.102986611740474 0.154479917610711];
+% AmBK = A-B*K

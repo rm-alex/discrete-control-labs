@@ -536,6 +536,13 @@ $$
     B_\eta \\ 0
 \end{bmatrix},\ \bar{K}=\begin{bmatrix}
     -K_\eta& K
+\end{bmatrix},\ \bar{C}=\begin{bmatrix}
+    0&C
+\end{bmatrix},
+$$
+$$
+K=\begin{bmatrix}
+    k_1&k_2&...&k_n
 \end{bmatrix}
 $$
 
@@ -625,15 +632,10 @@ $$
 $$
 
 
-Положим $k_1=1,\bar{C}=\begin{bmatrix}
-    0_{1\times q}&C
-\end{bmatrix}$.
-
-
 Схема моделирования системы:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.6]{sch3.png}
+    \includegraphics[scale=0.65]{sch3.png}
     \caption{Схема моделирования системы со следящим регулятором}
     \label{fig:sch3}
 \end{figure}
@@ -641,16 +643,16 @@ $$
 
 Выполним моделирование системы при $\bar{x}(0)=\begin{bmatrix}
     0&1&0
-\end{bmatrix}$:
+\end{bmatrix}^T$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{2yg.png}
+    \includegraphics[scale=0.8]{2yg.png}
     \caption{Выход системы и генератора}
     \label{fig:2yg}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{2e.png}
+    \includegraphics[scale=0.8]{2e.png}
     \caption{Ошибка слежения}
     \label{fig:2e}
 \end{figure}
@@ -687,7 +689,7 @@ $A$ -- матрица динамики ОУ размерности
 $n\times n$, $B$ -- матрица входов ОУ
 размерности $n\times k$,
 $C_\text{и}$ -- матрица измерений ОУ
-размерности $l\times k$, при этом $l<n,\operatorname{rank}(C_\text{и})=l$.
+размерности $l\times n$, при этом $l<n,\operatorname{rank}(C_\text{и})=l$.
 
 
 Устройство оценки полной размерности:
@@ -708,6 +710,109 @@ $$
 $$
 \tilde{x}(m+1)=\left( A-LC_\text{и} \right)\tilde{x}(m)=F_\text{н}\tilde{x}(m)
 $$
+
+
+Ранее была проверена наблюдаемость пары $(C=C_\text{и},A)$
+-- система полностью наблюдаема.
+
+
+Оптимальная по быстродействию модель при $z_{i\text{н}}^*=0$:
+$$
+\Gamma_\text{н}=\begin{bmatrix}
+    0&1\\0&0
+\end{bmatrix},\ H_\text{н}=\begin{bmatrix}
+    1&0
+\end{bmatrix}
+$$
+
+
+Пара $(H_\text{н},\Gamma_\text{н})$
+полностью управляема по признаку Жордана.
+
+
+Решим уравнение типа Сильвестра относительно $M_\text{н}$:
+$$
+\begin{cases}
+    M_\text{н}\Gamma_\text{н}-A^TM_\text{н}=-C^TH_\text{н},\\
+    L=\left( H_\text{н}M_\text{н}^{-1} \right)^T
+\end{cases}
+$$
+
+
+Получим:
+$$
+M_\text{н}=\begin{bmatrix}
+    1&    1\\
+   -1&   -2
+\end{bmatrix},\ L=\begin{bmatrix}
+    2\\ 1
+\end{bmatrix}
+$$
+
+
+Проверим спектр $F_\text{н}=A-LC$:
+$$
+\sigma(F_\text{н})=10^{-7}\cdot\left\{0 \pm 0.1772i  \right\}
+$$
+
+
+Регулятор:
+$$
+u(m)=-K\hat{x}(m),\ K=\begin{bmatrix}
+    0.103&0.1545
+\end{bmatrix}
+$$
+
+
+Схема моделирования системы:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.46]{sch4.png}
+    \caption{Схема моделирования системы с наблюдателем}
+    \label{fig:sch4}
+\end{figure}
+
+
+Выполним моделирование системы при $\hat{x}(0)=\begin{bmatrix}
+    0&1
+\end{bmatrix}^T$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{3x1.png}
+    \caption{Элемент вектора состояния ОУ и его оценка}
+    \label{fig:3x1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{3x2.png}
+    \caption{Элемент вектора состояния ОУ и его оценка}
+    \label{fig:3x2}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{3e.png}
+    \caption{Невязка наблюдателя $e=x-\hat{x}$}
+    \label{fig:3e}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{3y.png}
+    \caption{Выход системы}
+    \label{fig:3y}
+\end{figure}
+
+
+Наблюдатель сошелся к истинным состояниям
+за $m=2$ шага при $T=1$ -- это удовлетворяет условию оптимальной по быстродействию сходимости:
+$$
+T_L=2\leq nT=2,
+$$
+где $n=2$ -- порядок системы.
+
+
+Сходимость системы к устоявшемуся состоянию увеличилась
+на $2$ до $m=4$ шагов по сравнению с моделированием в пункте (2) -- динамика стала
+на порядок больше из-за наблюдателя.
 
 
 \section{Вывод}
