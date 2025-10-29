@@ -55,12 +55,22 @@ barG=[0 1 0;
 barH=[1 0 0];
 
 cvx_begin sdp
-variable M(3,3)
-M*barG - barA*M == -barB*barH;
+variable barM(3,3)
+barM*barG - barA*barM == -barB*barH;
 cvx_end
 
-M
-barK=barH*inv(M)
+barM
+barK=barH*inv(barM)
 
 barF=barA-barB*barK
 eig(barF)
+
+%% sim
+
+barC=[0 C]
+k1=1;
+bBg=barB1+k1*barB
+
+set_param('sim3/barF', 'Gain', mat2str(barF));
+set_param('sim3/barC', 'Gain', mat2str(barC));
+set_param('sim3/barBg', 'Gain', mat2str(bBg));
