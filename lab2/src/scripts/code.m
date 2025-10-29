@@ -92,5 +92,34 @@ L = (Hn*Mn^-1)'
 Fn=A-L*C
 eig(Fn)
 
-% K=[0.102986611740474 0.154479917610711];
-% AmBK = A-B*K
+%% с
+
+G=1;
+H=1;
+B_eta=1;
+
+barA=[G -B_eta*C;
+      [0;0] A]
+barB=[0;B]
+barB1=[B_eta;[0;0]]
+
+barGn=[0 1 0;
+       0 0 1;
+       0 0 0];
+barHn=[1 0 0];
+
+barC=[1 C];
+
+barV=[barC;barC*barA; barC*barA^2]
+rank(barV)
+
+cvx_begin sdp
+variable barMn(3,3)
+barMn*barGn-barA'*barMn == -barC'*barHn;
+cvx_end
+
+barMn
+L = (barHn*barMn^-1)'
+
+barFn=barA-L*barC
+eig(barFn)

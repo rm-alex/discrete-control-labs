@@ -816,6 +816,54 @@ $$
 на порядок больше из-за наблюдателя.
 
 
+Синтезируем наблюдатель для системы со следящим регулятором:
+$$
+\begin{cases}
+    \bar{M}_\text{н}\bar{\Gamma}_\text{н}-\bar{A}^T\bar{M}_\text{н}=-\bar{C}^T\bar{H}_\text{н},\\
+    \bar{L}=\left( \bar{H}_\text{н}\bar{M}_\text{н}^{-1} \right)^T
+\end{cases}
+$$
+
+
+Задающий сигнал должен быть измерим, иначе пара $\left( \bar{C},\bar{A} \right)$
+будет ненаблюдаема:
+$$
+\bar{C}=\begin{bmatrix}
+    1&C
+\end{bmatrix}
+$$
+
+
+Для оптимального по быстродействию наблюдателя положим:
+$$
+\bar{\Gamma}_\text{н}=\begin{bmatrix}
+    0&1&0\\0&0&1\\0&0&0
+\end{bmatrix},\ \bar{H}_\text{н}=\begin{bmatrix}
+    1&0&0
+\end{bmatrix}
+$$
+
+
+Получим:
+$$
+\bar{M}_\text{н}=\begin{bmatrix}
+    1     &1     &1\\
+     2     &3    & 4\\
+    -2    &-5   & -9
+\end{bmatrix},\ \bar{L}=\begin{bmatrix}
+    7\\
+    -4\\
+    -1
+\end{bmatrix}
+$$
+
+
+Проверим спектр $\bar{F}_\text{н}=\bar{A}-\bar{L}\bar{C}$:
+$$
+\sigma(\bar{F}_\text{н})=10^{-4}\cdot\left\{ -0.0856 \pm 0.1482i,0.1712 \right\}
+$$
+
+
 \section{Вывод}
 \dots
 \end{document}
