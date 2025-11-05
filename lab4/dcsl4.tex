@@ -177,7 +177,7 @@ $$
 
 Таким образом,
 $$
-n_d=\frac{1.1}{1}=1\Rightarrow n_d\sim 1\Rightarrow e^{-1.1s}\sim e^{-s}
+n_d=\frac{1.1}{1}=1.1\Rightarrow n_d\sim 1\Rightarrow e^{-1.1s}\sim e^{-s}\Rightarrow Z\left\{ e^{-1.1s} \right\}\sim Z\left\{ e^{-s} \right\}=z^{-1}
 $$
 
 
@@ -185,7 +185,8 @@ $$
 \begin{align*}
     HG(z)&=Z\left\{ \frac{1-e^{-sT}}{s}G(s) \right\}=\left( 1-z^{-1} \right)Z\left\{ \frac{e^{-1.1s}}{s\left( 1+10s \right)} \right\}=\\
     &=\left( 1-z^{-1} \right)z^{-1}Z\left\{ \frac{1}{s\left( 1+10s \right)} \right\}=\left( 1-z^{-1} \right)z^{-1}Z\left\{ \frac{0.1}{s\left( s+0.1 \right)} \right\}=\\
-    &=\left( 1-z^{-1} \right)z^{-1}\frac{z\left( 1-e^{0.1} \right)}{\left( z-1 \right)\left( z-e^{-0.1} \right)}=z^{-2}\frac{1-e^{-0.1}}{1-e^{-0.1}z^{-1}}=\frac{0.095z^{-2}}{1-0.905z^{-1}}
+    &=\left( 1-z^{-1} \right)z^{-1}\frac{z\left( 1-e^{-0.1} \right)}{\left( z-1 \right)\left( z-e^{-0.1} \right)}=z^{-2}\frac{1-e^{-0.1}}{1-e^{-0.1}z^{-1}}=\frac{0.095z^{-2}}{1-0.905z^{-1}}=\\
+    &=\frac{0.095}{z^2-0.905z}
 \end{align*}
 
 
@@ -200,6 +201,32 @@ $$
 D(z)=\frac{1-0.905z^{-1}}{0.095z^{-2}}\frac{z^{-2}}{1-z^{-2}}=
 \frac{z^2-0.905z}{0.095\left( z^2-1 \right)}
 $$
+
+
+Модель системы в симулинк:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{sch1.png}
+    \caption{Схема моделирования системы с апериодическим регулятором}
+    \label{fig:sch1}
+\end{figure}
+
+
+\newpage
+Графики управления и выхода системы при ступенчатом задающем воздействии с начальным
+значением 0, конечным 1, время шага 3; $T=1$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{1y.png}
+    \caption{Выход системы с апериодическим регулятором}
+    \label{fig:1y}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{1u.png}
+    \caption{Апериодический регулятор}
+    \label{fig:1u}
+\end{figure}
 
 
 \section{Вывод}
