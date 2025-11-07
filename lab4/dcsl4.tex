@@ -217,7 +217,7 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[scale=1]{r.png}
-    \caption{Задающее воздействие}
+    \caption{Ступенчатое задающее воздействие $r(m)$}
     \label{fig:r}
 \end{figure}
 \begin{figure}[H]
@@ -249,7 +249,7 @@ $$
 
 
 Выход системы отстает на $m=2$ шага от входа при $k=2$,
-при $k=3$ на $m=3$ шага.
+при $k=3$ на $m=3$ шага, т.е. отставание на $k$.
 
 
 \subsection{Регулятор Далина}
@@ -486,12 +486,89 @@ $$
 
 
 Передаточная функция регулятора:
-\begin{align*}
-    D(z)&=\frac{1}{HG(z)}\frac{T(z)}{1-T(z)}=\frac{z^2-1.5z+0.5}{0.03\left( z+0.75 \right)}\cdot\frac{-28.596z+30.307}{z^2+29.114z-30.114}=\\
-    &=\frac{-28.596z^3+73.201z^2-59.759z+15.154}{0.03z^3+0.896z^2-0.248z-0.678}
-\end{align*}
+$$
+D(z)=\frac{1}{HG(z)}\frac{T(z)}{1-T(z)},
+$$
+$$
+D(z)=\frac{z^2-1.5z+0.5}{0.03\left( z+0.75 \right)}\cdot\frac{-28.596z+30.307}{z^2+29.114z-30.114},\\
+$$
+$$
+D(z)=\frac{-28.596z^3+73.201z^2-59.759z+15.154}{0.03z^3+0.896z^2-0.248z-0.678}
+$$
+
+
+Схема моделирования системы с регулятором с заданным расположением полюсов:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{sch3.png}
+    \caption{Схема моделирования системы с fixed-pole регулятором}
+    \label{fig:sch3}
+\end{figure}
+
+
+\newpage
+Графики управления, выхода системы и ошибки при ступенчатом (см. рис. (\ref{fig:r}))
+и линейно нарастающем задающих воздействиях $r(m),\tilde{r}(m)$ при $T=0.55$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{3y_r.png}
+    \caption{Выход системы с fixed-pole регулятором, $T=0.55$, вход $r(m)$}
+    \label{fig:3y_r}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{3e_r.png}
+    \caption{Ошибка с fixed-pole регулятором, $T=0.55$, вход $r(m)$}
+    \label{fig:3e_r}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{3u_r.png}
+    \caption{Fixed-pole регулятор, $T=0.55$, вход $r(m)$}
+    \label{fig:3u_r}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{r2.png}
+    \caption{Линейно нарастающее задающее воздействие $\tilde{r}(m)$}
+    \label{fig:r2}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{3y_r2.png}
+    \caption{Выход системы с fixed-pole регулятором, $T=0.55$, вход $\tilde{r}(m)$}
+    \label{fig:3y_r2}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{3e_r2.png}
+    \caption{Ошибка с fixed-pole регулятором, $T=0.55$, вход $\tilde{r}(m)$}
+    \label{fig:3e_r2}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{3u_r2.png}
+    \caption{Fixed-pole регулятор, $T=0.55$, вход $\tilde{r}(m)$}
+    \label{fig:3u_r2}
+\end{figure}
+
+
+Ошибка при ступенчатом входном воздействии стремится к нулю.
+
+
+Ошибка при линейно нарастающем входном воздействии с $A=1$ стремится к 10.
+Проверим теоретически:
+$$
+E_{ss}=\frac{A}{K_v}=\frac{1}{0.1}=10
+$$
 
 
 \section{Вывод}
-...
+В ходе выполнения лабораторной работы
+были исследованы апериодический, Далина и
+с заданным расположением полюсов регуляторы.
+В каждом случае было проведено моделирование системы.
+Результаты подтверждают корректность выполненных расчетов.
 \end{document}
