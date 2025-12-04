@@ -175,33 +175,21 @@ $$
 при задающем воздействии $r(t)=1, T=T_1/2$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{q0_07_y.png}
-    \caption{Выход системы при $q_0=0.0007,r(t)=1,T=T_1/2$}
-    \label{fig:q0_07_y}
-\end{figure}
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[scale=0.9]{q0_07_u.png}
-%     \caption{Дискретный ПИД регулятор при $q_0=0.0007,r(t)=1,T=T_1/2$}
-%     \label{fig:q0_07_u}
-% \end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{q0_08_y.png}
-    \caption{Выход системы при $q_0=0.0008,r(t)=1,T=T_1/2$}
-    \label{fig:q0_08_y}
-\end{figure}
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[scale=0.9]{q0_08_u.png}
-%     \caption{Дискретный ПИД регулятор при $q_0=0.0008,r(t)=1,T=T_1/2$}
-%     \label{fig:q0_08_u}
-% \end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_r_1.png}
+    \includegraphics[scale=0.7]{sysin1.png}
     \caption{Задающее воздействие $r(t)=1$}
-    \label{fig:1_r_1}
+    \label{fig:sysin1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{y_q1.png}
+    \caption{Выход системы при $q_0=0.0007,r(t)=1,T=T_1/2$}
+    \label{fig:y_q1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{y_q2.png}
+    \caption{Выход системы при $q_0=0.0008,r(t)=1,T=T_1/2$}
+    \label{fig:y_q2}
 \end{figure}
 
 
@@ -213,220 +201,89 @@ $$
 Исследуем ступенчатое изменение задающего воздействия при $T=T_1/2$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_r_step_10_0_1_0.png}
-    \caption{Задающее воздействие $r_1(t)$}
-    \label{fig:1_r_step_10_0_1_0}
+    \includegraphics[scale=0.7]{sysin.png}
+    \caption{Задающее воздействие $r(t)=\operatorname{step}(t=1,t_0=0,t_1=1)$}
+    \label{fig:sysin}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_y_step_10_0_1_0.png}
-    \caption{Выход системы при $r_1(t),T=T_1/2$}
-    \label{fig:1_y_step_10_0_1_0}
+    \includegraphics[scale=0.7]{y_step_t12.png}
+    \caption{Выход системы при $r(t)=\operatorname{step}(1,0,1),T=T_1/2$}
+    \label{fig:y_step_t12}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_u_step_10_0_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_1(t),T=T_1/2$}
-    \label{fig:1_u_step_10_0_1_0}
+    \includegraphics[scale=0.7]{u_step_t12.png}
+    \caption{Дискретный ПИД регулятор при $r(t)=\operatorname{step}(1,0,1),T=T_1/2$}
+    \label{fig:u_step_t12}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_e_step_10_0_1_0.png}
-    \caption{Ошибка $e=r_1(t)-y(t),T=T_1/2$}
-    \label{fig:1_e_step_10_0_1_0}
+    \includegraphics[scale=0.7]{e_step_t12.png}
+    \caption{Ошибка $e=r(t)-y(t),T=T_1/2$}
+    \label{fig:e_step_t12}
 \end{figure}
 
 
+Исследуем ступенчатое изменение возмущающего воздействия $d(t)=\operatorname{step}(1,0,1)$ (см. рис. \ref{fig:sysin}) при $r(t)=1,T=T_1/2$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_r_step_10_3_1_0.png}
-    \caption{Задающее воздействие $r_2(t)$}
-    \label{fig:1_r_step_10_3_1_0}
+    \includegraphics[scale=0.7]{y_step_d_t12.png}
+    \caption{Выход системы при $d(t)=\operatorname{step}(1,0,1),r(t)=1,T=T_1/2$}
+    \label{fig:y_step_d_t12}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_y_step_10_3_1_0.png}
-    \caption{Выход системы при $r_2(t),T=T_1/2$}
-    \label{fig:1_y_step_10_3_1_0}
+    \includegraphics[scale=0.7]{u_step_d_t12.png}
+    \caption{Дискретный ПИД регулятор при $d(t)=\operatorname{step}(1,0,1),r(t)=1,T=T_1/2$}
+    \label{fig:u_step_d_t12}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_u_step_10_3_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_2(t),T=T_1/2$}
-    \label{fig:1_u_step_10_3_1_0}
+    \includegraphics[scale=0.7]{e_step_d_t12.png}
+    \caption{Ошибка $e=r(t)-y(t),r(t)=1,d(t)=\operatorname{step}(1,0,1),T=T_1/2$}
+    \label{fig:e_step_d_t12}
 \end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_e_step_10_3_1_0.png}
-    \caption{Ошибка $e=r_2(t)-y(t),T=T_1/2$}
-    \label{fig:1_e_step_10_3_1_0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_r_step_10_m1_1_0.png}
-    \caption{Задающее воздействие $r_3(t)$}
-    \label{fig:1_r_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_y_step_10_m1_1_0.png}
-    \caption{Выход системы при $r_3(t),T=T_1/2$}
-    \label{fig:1_y_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_u_step_10_m1_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_3(t),T=T_1/2$}
-    \label{fig:1_u_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_e_step_10_m1_1_0.png}
-    \caption{Ошибка $e=r_3(t)-y(t),T=T_1/2$}
-    \label{fig:1_e_step_10_m1_1_0}
-\end{figure}
-
-
-Положим $r(t)=1$ (см. рис. (\ref{fig:1_r_1})).
-
-
-Исследуем ступенчатое изменение возмущающего воздействия $d(t)$
-полагая, что $d_i(t)=r_i(t)$ (см. рис. (\ref{fig:1_r_step_10_0_1_0}),
-(\ref{fig:1_r_step_10_3_1_0}), (\ref{fig:1_r_step_10_m1_1_0})) при $T=T_1/2$:
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_y_stepd_10_0_1_0.png}
-    \caption{Выход системы при $d_1(t)=r_1(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_y_stepd_10_0_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_u_stepd_10_0_1_0.png}
-    \caption{Дискретный ПИД регулятор при $d_1(t)=r_1(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_u_stepd_10_0_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_e_stepd_10_0_1_0.png}
-    \caption{Ошибка $e=r_1(t)-y(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_e_stepd_10_0_1_0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_y_stepd_10_3_1_0.png}
-    \caption{Выход системы при $d_2(t)=r_2(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_y_stepd_10_3_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_u_stepd_10_3_1_0.png}
-    \caption{Дискретный ПИД регулятор при $d_2(t)=r_2(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_u_stepd_10_3_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_e_stepd_10_3_1_0.png}
-    \caption{Ошибка $e=r_2(t)-y(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_e_stepd_10_3_1_0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_y_stepd_10_m1_1_0.png}
-    \caption{Выход системы при $d_3(t)=r_3(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_y_stepd_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_u_stepd_10_m1_1_0.png}
-    \caption{Дискретный ПИД регулятор при $d_3(t)=r_3(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_u_stepd_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_e_stepd_10_m1_1_0.png}
-    \caption{Ошибка $e=r_3(t)-y(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_e_stepd_10_m1_1_0}
-\end{figure}
-
-
-Оставим $r(t)=1$ (см. рис. (\ref{fig:1_r_1})).
 
 
 Исследуем возмущающее воздействие, изменяющеся по случайному закону
 (гауссовский шум) при $T=T_1/2$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_d_0.0001.png}
-    \caption{Возмущающее воздействие $d_{g,1}(t)$}
-    \label{fig:1_d_g_00001}
+    \includegraphics[scale=0.7]{d_g.png}
+    \caption{Возмущающее воздействие $d_{g}(t)$}
+    \label{fig:d_g}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_y_g_0.0001.png}
-    \caption{Выход системы при $d_{g,1}(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_y_g_00001}
+    \includegraphics[scale=0.7]{y_dg_t12.png}
+    \caption{Выход системы при $d_{g}(t),r(t)=1,T=T_1/2$}
+    \label{fig:y_dg_t12}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_u_g_0.0001.png}
-    \caption{Дискретный ПИД регулятор при $d_{g,1}(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_u_g_00001}
+    \includegraphics[scale=0.7]{u_dg_t12.png}
+    \caption{Дискретный ПИД регулятор при $d_{g}(t),r(t)=1,T=T_1/2$}
+    \label{fig:u_dg_t12}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{1_e_g_0.0001.png}
-    \caption{Ошибка $e=d_{g,1}(t)-y(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_e_g_00001}
+    \includegraphics[scale=0.7]{e_dg_t12.png}
+    \caption{Ошибка $e=d_{g}(t)-y(t),r(t)=1,T=T_1/2$}
+    \label{fig:e_dg_t12}
 \end{figure}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_d_0.01.png}
-    \caption{Возмущающее воздействие $d_{g,2}(t)$}
-    \label{fig:1_d_g_001}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_y_g_0.01.png}
-    \caption{Выход системы при $d_{g,2}(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_y_g_001}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_u_g_0.01.png}
-    \caption{Дискретный ПИД регулятор при $d_{g,2}(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_u_g_001}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{1_e_g_0.01.png}
-    \caption{Ошибка $e=d_{g,2}(t)-y(t),r(t)=1,T=T_1/2$}
-    \label{fig:1_e_g_001}
-\end{figure}
+При ступенчатом входном воздействии время переходного процесса\\ несколько больше,
+чем в случае $r(t)=1$.
 
 
-Вне зависимости от ступенчатого входящего воздействия
-или возмущения система около положения равновесия
-имеет слабоколебательные процессы. Время переходного
-процесса околоидентично.
+При наличии возмущения время переходного процесса увеличивается.
 
 
-При воздействии маленького случайного шума
-система колеблется около положения равновесия.
-При увеличении амплитуды такого внешнего воздействия
-колебания усиливаются. Такое поведение ожидаемо, так
-как случайный шум нельзя скомпенсировать полностью.
-
-
-В случаях, когда начальный задающий сигнал дальше от конечного,
-регулятору требуется больше энергии на стабилизацию системы.
+При воздействии небольшого случайного шума
+система колеблется около положения равновесия
+-- случайный шум нельзя скомпенсировать полностью.
 
 
 \subsection{Период дискретизации и качество процесса управления}
@@ -447,71 +304,31 @@ $$
 $$
 
 
-Положим $q_0=0.0008$, как и ранее.
+Положим $q_0=0.0008$.
 
 
-Исследуем ступенчатое изменение задающего воздействия (см. рис. (\ref{fig:1_r_step_10_0_1_0}), (\ref{fig:1_r_step_10_3_1_0}), (\ref{fig:1_r_step_10_m1_1_0})) при $T=T_1/4$:
+Исследуем ступенчатое изменение задающего воздействия при $T=T_1/4$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{2_y_step_10_0_1_0.png}
-    \caption{Выход системы при $r_1(t),T=T_1/4$}
-    \label{fig:2_y_step_10_0_1_0}
+    \includegraphics[scale=0.7]{y_step_t14.png}
+    \caption{Выход системы при $r(t)=\operatorname{step}(1,0,1),T=T_1/4$}
+    \label{fig:y_step_t14}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{2_u_step_10_0_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_1(t),T=T_1/4$}
-    \label{fig:2_u_step_10_0_1_0}
+    \includegraphics[scale=0.7]{u_step_t14.png}
+    \caption{Дискретный ПИД регулятор при $r(t)=\operatorname{step}(1,0,1),T=T_1/4$}
+    \label{fig:u_step_t14}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{2_e_step_10_0_1_0.png}
-    \caption{Ошибка $e=r_1(t)-y(t),T=T_1/4$}
-    \label{fig:2_e_step_10_0_1_0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{2_y_step_10_3_1_0.png}
-    \caption{Выход системы при $r_2(t),T=T_1/4$}
-    \label{fig:2_y_step_10_3_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{2_u_step_10_3_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_2(t),T=T_1/4$}
-    \label{fig:2_u_step_10_3_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{2_e_step_10_3_1_0.png}
-    \caption{Ошибка $e=r_2(t)-y(t),T=T_1/4$}
-    \label{fig:2_e_step_10_3_1_0}
+    \includegraphics[scale=0.7]{e_step_t14.png}
+    \caption{Ошибка $e=r(t)-y(t),T=T_1/4$}
+    \label{fig:e_step_t14}
 \end{figure}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{2_y_step_10_m1_1_0.png}
-    \caption{Выход системы при $r_3(t),T=T_1/4$}
-    \label{fig:2_y_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{2_u_step_10_m1_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_3(t),T=T_1/4$}
-    \label{fig:2_u_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{2_e_step_10_m1_1_0.png}
-    \caption{Ошибка $e=r_3(t)-y(t),T=T_1/4$}
-    \label{fig:2_e_step_10_m1_1_0}
-\end{figure}
-
-
-Во всех случаях при уменьшении
+При уменьшении
 пероида дискретизации в системе
 стало больше осцилляций,
 время переходного процесса увеличилось,
@@ -537,67 +354,27 @@ $$
 $$
 
 
-Положим $q_0=0.0008$, как и ранее.
+Положим $q_0=0.0008$.
 
 
-Исследуем ступенчатое изменение задающего воздействия (см. рис. (\ref{fig:1_r_step_10_0_1_0}), (\ref{fig:1_r_step_10_3_1_0}), (\ref{fig:1_r_step_10_m1_1_0})) при $T=T_1/4$:
+Исследуем ступенчатое изменение задающего воздействия при $T=T_1/4$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{3_y_step_10_0_1_0.png}
-    \caption{Выход системы при $r_1(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_y_step_10_0_1_0}
+    \includegraphics[scale=0.7]{y_step_t14_t2p20.png}
+    \caption{Выход системы при $r(t)=\operatorname{step}(1,0,1),T=T_1/4,T_2=1.44$}
+    \label{fig:y_step_t14_t2p20}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{3_u_step_10_0_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_1(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_u_step_10_0_1_0}
+    \includegraphics[scale=0.7]{u_step_t14_t2p20.png}
+    \caption{Дискретный ПИД регулятор при $r(t)=\operatorname{step}(1,0,1),T=T_1/4,T_2=1.44$}
+    \label{fig:u_step_t14_t2p20}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{3_e_step_10_0_1_0.png}
-    \caption{Ошибка $e=r_1(t)-y(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_e_step_10_0_1_0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{3_y_step_10_3_1_0.png}
-    \caption{Выход системы при $r_2(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_y_step_10_3_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{3_u_step_10_3_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_2(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_u_step_10_3_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{3_e_step_10_3_1_0.png}
-    \caption{Ошибка $e=r_2(t)-y(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_e_step_10_3_1_0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{3_y_step_10_m1_1_0.png}
-    \caption{Выход системы при $r_3(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_y_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{3_u_step_10_m1_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_3(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_u_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{3_e_step_10_m1_1_0.png}
-    \caption{Ошибка $e=r_3(t)-y(t),T=T_1/4,T_2=1.44$}
-    \label{fig:3_e_step_10_m1_1_0}
+    \includegraphics[scale=0.7]{e_step_t14_t2p20.png}
+    \caption{Ошибка $e=r(t)-y(t),T=T_1/4,T_2=1.44$}
+    \label{fig:e_step_t14_t2p20}
 \end{figure}
 
 
@@ -606,9 +383,9 @@ $$
 управления затрачивается больше.
 
 
-По сравнению со случаями для исследования
+По сравнению со случаем исследования
 периода дискретизации амплитуды колебаний
-в этом случае несколько меньше.
+несколько меньше.
 
 
 Уменьшим значение постоянной времени $T_2$
@@ -630,67 +407,27 @@ $$
 $$
 
 
-Положим $q_0=0.0008$, как и ранее.
+Положим $q_0=0.0008$.
 
 
-Исследуем ступенчатое изменение задающего воздействия (см. рис. (\ref{fig:1_r_step_10_0_1_0}), (\ref{fig:1_r_step_10_3_1_0}), (\ref{fig:1_r_step_10_m1_1_0})) при $T=T_1/4$:
+Исследуем ступенчатое изменение задающего воздействия при $T=T_1/4$:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{4_y_step_10_0_1_0.png}
-    \caption{Выход системы при $r_1(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_y_step_10_0_1_0}
+    \includegraphics[scale=0.7]{y_step_t14_t2m20.png}
+    \caption{Выход системы при $r(t)=\operatorname{step}(1,0,1),T=T_1/4,T_2=0.96$}
+    \label{fig:y_step_t14_t2m20}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{4_u_step_10_0_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_1(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_u_step_10_0_1_0}
+    \includegraphics[scale=0.7]{u_step_t14_t2m20.png}
+    \caption{Дискретный ПИД регулятор при $r(t)=\operatorname{step}(1,0,1),T=T_1/4,T_2=0.96$}
+    \label{fig:u_step_t14_t2m20}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{4_e_step_10_0_1_0.png}
-    \caption{Ошибка $e=r_1(t)-y(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_e_step_10_0_1_0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{4_y_step_10_3_1_0.png}
-    \caption{Выход системы при $r_2(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_y_step_10_3_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{4_u_step_10_3_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_2(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_u_step_10_3_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{4_e_step_10_3_1_0.png}
-    \caption{Ошибка $e=r_2(t)-y(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_e_step_10_3_1_0}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{4_y_step_10_m1_1_0.png}
-    \caption{Выход системы при $r_3(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_y_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{4_u_step_10_m1_1_0.png}
-    \caption{Дискретный ПИД регулятор при $r_3(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_u_step_10_m1_1_0}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.9]{4_e_step_10_m1_1_0.png}
-    \caption{Ошибка $e=r_3(t)-y(t),T=T_1/4,T_2=0.96$}
-    \label{fig:4_e_step_10_m1_1_0}
+    \includegraphics[scale=0.7]{e_step_t14_t2m20.png}
+    \caption{Ошибка $e=r(t)-y(t),T=T_1/4,T_2=0.96$}
+    \label{fig:e_step_t14_t2m20}
 \end{figure}
 
 
@@ -711,8 +448,8 @@ $$
 коэффициента передачи регулятора
 для устойчивого слабоколебательного
 процесса. Было исследовано
-влияние различных ступенчатых
-задающих воздействий и возмущений,
+влияние ступенчатого
+задающего воздействия и возмущения,
 а также случайного шума на поведение
 системы и регулятора. Был сделан вывод,
 что такие воздействия почти не
@@ -721,7 +458,7 @@ $$
 случайного шума -- в его случае
 система колеблется около положения равновесия,
 так как случайный шум нельзя полностью скомпенсировать.
-Было исследование влияние на модель периода дискретизации
+Было исследовано влияние на модель периода дискретизации
 и неточности компенсации полюсов ОУ. Результаты моделирования
 показали, что в этих случаях в системе становится
 больше осцилляций, время переходного процесса увеличивается,
